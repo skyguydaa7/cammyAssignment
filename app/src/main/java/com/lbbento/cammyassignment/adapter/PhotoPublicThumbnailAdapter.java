@@ -2,10 +2,8 @@ package com.lbbento.cammyassignment.adapter;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,7 @@ import com.lbbento.cammyassignment.api.model.PhotoPublicItem;
 import java.util.ArrayList;
 
 /**
- * Created by lbbento on 11/11/15.
+ * Created by lbbento on 10/11/15.
  */
 public class PhotoPublicThumbnailAdapter extends  RecyclerView.Adapter <PhotoPublicThumbnailAdapter.ListItemViewHolder>   {
 

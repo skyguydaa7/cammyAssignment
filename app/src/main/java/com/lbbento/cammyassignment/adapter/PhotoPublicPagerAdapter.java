@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Created by lbbento on 10/11/15.
+ *
  * A {@link android.support.v4.app.FragmentStatePagerAdapter} that returns a fragment
  * representing an object in the collection.
  */

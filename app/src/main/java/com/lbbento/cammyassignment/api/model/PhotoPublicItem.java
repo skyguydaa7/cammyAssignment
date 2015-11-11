@@ -1,8 +1,6 @@
 package com.lbbento.cammyassignment.api.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by lbbento on 10/11/15.

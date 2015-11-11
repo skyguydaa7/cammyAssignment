@@ -24,6 +24,8 @@ public class ApiPhotoPublicControl {
 
     /**
      * Send request and get response using Volley from FLickr API, send it to the view using EventBus.
+     * @param ctx Caller COntext
+     * @param tag Tag to name the threads
      */
     public static void getPhotoPublic(Context ctx, String tag) {
         final EventBus eventBus = EventBus.getDefault();

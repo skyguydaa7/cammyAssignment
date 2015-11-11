@@ -9,7 +9,7 @@ import de.greenrobot.event.EventBus;
 import icepick.Icepick;
 
 /**
- * Created by lbbento on 11/11/15.
+ * Created by lbbento on 10/11/15.
  */
 public class BaseEventBusFragment extends Fragment {
 
@@ -17,7 +17,7 @@ public class BaseEventBusFragment extends Fragment {
     protected EventBus eventBus;
 
     /**
-     * Save the instance and objects anotted with @Param using IcePick
+     * Save the instance and objects with the annotation @State using IcePick
      * @param outState
      */
     @Override

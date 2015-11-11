@@ -32,7 +32,8 @@ import icepick.Icepick;
 import icepick.State;
 
 /**
- * A placeholder fragment containing a simple view.
+ * by Lucas - 10/11/15
+ * A placeholder fragment containing the main view = gallery.
  */
 public class MainActivityFragment extends BaseEventBusFragment {
 
