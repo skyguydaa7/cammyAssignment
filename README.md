@@ -1,6 +1,6 @@
 Cammy Assignment
 
-This App reads the FlickrPublicPhotos API using JSON format and show the pictures in a gallery.<br>
+This App reads the FlickrPublicPhotos API using JSON format and show the pictures in a gallery design.<br>
 This project uses:<br><br>
  -EventBus to communicate between the Volley Restful requests and the UI. <br>
  -Icepick to save the instance and configuration changes.<br>
