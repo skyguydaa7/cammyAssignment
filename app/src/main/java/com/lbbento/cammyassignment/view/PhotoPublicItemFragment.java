@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.lbbento.cammyassignment.R;
@@ -75,7 +76,12 @@ public class PhotoPublicItemFragment extends BaseFragment {
      */
     private void bindViews(View view) {
         SimpleDraweeView mSimpleDraweeView = (SimpleDraweeView) view.findViewById(R.id.image);
+        TextView title = (TextView) view.findViewById(R.id.title);
 
+        if (mPhotoPublicItem.getTitle() != null && mPhotoPublicItem.getTitle().length() > 0)
+            title.setText(mPhotoPublicItem.getTitle());
+        else
+            title.setVisibility(View.GONE);
         mSimpleDraweeView.setImageURI(Uri.parse(mPhotoPublicItem.getMedia().getM()));
     }
 

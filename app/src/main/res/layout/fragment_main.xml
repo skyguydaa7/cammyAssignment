@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:elevation="2dp"
+        android:elevation="5dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
 
@@ -36,6 +36,6 @@
         android:layout_weight="0.2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/main_fragment_background"/>
+        />
 
 </LinearLayout>

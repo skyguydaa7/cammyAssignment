@@ -58,7 +58,7 @@ public class PhotoPublicThumbnailAdapter extends  RecyclerView.Adapter <PhotoPub
         if (position == itemSelected)
             viewHolder.cardView.setBackgroundColor(ctx.getResources().getColor(R.color.thumbnail_item_selected));
         else
-            viewHolder.cardView.setBackgroundColor(ctx.getResources().getColor(R.color.main_fragment_background));
+            viewHolder.cardView.setBackgroundColor(ctx.getResources().getColor(android.R.color.transparent));
 
     }
 
