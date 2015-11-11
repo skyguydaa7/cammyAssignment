@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 /**
  * Created by lbbento on 20/10/15.
+ * JsonObjectRequest including the retry policy in case of network error.
  */
 
 public class JsonObjectTokenRequest extends JsonObjectRequest{

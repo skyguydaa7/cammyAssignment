@@ -3,6 +3,11 @@ package com.lbbento.cammyassignment.view.util;
 import android.content.Context;
 import android.os.Build;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  * Created by lbbento on 10/11/15.
  */
@@ -24,4 +29,23 @@ public class ViewUtil {
         return result;
     }
 
+    /**
+     * converts time to UTC format
+     */
+    public static String getHourFormatted(Date createdUTC) {
+
+        Date dateServer = createdUTC;
+
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
+        Calendar cal=Calendar.getInstance(TimeZone.getDefault());
+        Date dateGMT =cal.getTime();
+
+        return normalDateFormat(dateServer);
+
+    }
+
+    public static String normalDateFormat(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("MMMM dd, yyyy");
+        return format.format(date);
+    }
 }

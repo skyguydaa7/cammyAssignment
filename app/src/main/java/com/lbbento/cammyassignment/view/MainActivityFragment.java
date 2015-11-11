@@ -1,5 +1,6 @@
 package com.lbbento.cammyassignment.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -21,6 +26,7 @@ import com.lbbento.cammyassignment.adapter.PhotoPublicThumbnailAdapter;
 import com.lbbento.cammyassignment.api.control.ApiPhotoPublicControl;
 import com.lbbento.cammyassignment.api.model.PhotoPublic;
 import com.lbbento.cammyassignment.api.model.PhotoPublicItem;
+import com.lbbento.cammyassignment.view.animation.DepthPageTransformer;
 import com.lbbento.cammyassignment.view.base.BaseEventBusFragment;
 import com.lbbento.cammyassignment.view.util.ItemClickSupport;
 import com.lbbento.cammyassignment.view.util.ViewUtil;
@@ -44,7 +50,10 @@ public class MainActivityFragment extends BaseEventBusFragment {
     //WIdgets
     private RecyclerView mRecyclerImageThumbnail;
     private ViewPager imageViewPager;
+    private ImageView refreshIcon;
+    private TextView mTextError;
 
+    private Menu menu;
 
     @State  protected ArrayList<PhotoPublicItem> mPhotoPublicItemList;
 
@@ -95,17 +104,18 @@ public class MainActivityFragment extends BaseEventBusFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_main, menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+        final MenuItem item = menu.findItem(R.id.action_refresh);
+        item.setActionView(R.layout.refresh_icon);
+        refreshIcon = (ImageView) item.getActionView().findViewById(R.id.refreshButton);
 
-        if (id == R.id.action_refresh) {
-            ApiPhotoPublicControl.getPhotoPublic(getContext(), tag);
-        }
-
-        return super.onOptionsItemSelected(item);
+        refreshIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData();
+            }
+        });
+        this.menu = menu;
     }
 
     /**
@@ -113,8 +123,11 @@ public class MainActivityFragment extends BaseEventBusFragment {
      */
     private void bindViews(View view) {
 
+        mTextError = (TextView) view.findViewById(R.id.error);
+
         //IMage view
         imageViewPager = (ViewPager) view.findViewById(R.id.imageViewPager);
+        imageViewPager.setPageTransformer(true, new DepthPageTransformer());
         imageViewPager.setAdapter(mPhotoPublicPagerAdapter);
         imageViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -149,9 +162,10 @@ public class MainActivityFragment extends BaseEventBusFragment {
             }
         });
 
+
         //get data
         if (mPhotoPublicItemList == null || mPhotoPublicItemList.isEmpty())
-            ApiPhotoPublicControl.getPhotoPublic(getContext(), tag);
+            getData();
     }
 
     private void setUpToolbar(View view) {
@@ -169,11 +183,21 @@ public class MainActivityFragment extends BaseEventBusFragment {
     }
 
     /**
+     * Get data from the API
+     */
+    private void getData() {
+        ApiPhotoPublicControl.getPhotoPublic(getContext(), tag);
+        startRefreshing();
+
+    }
+
+    /**
      * EventBus Listener - To receive the object from the API - Do not call this method
      */
     public void onEvent(PhotoPublic mPhotoPublic) {
         if (mPhotoPublic != null) {
             try {
+                mTextError.setVisibility(View.GONE);
                 //clear
                 mPhotoPublicItemList.clear();
                 mPhotoPublicPagerAdapter = new PhotoPublicPagerAdapter(getChildFragmentManager(), mPhotoPublicItemList);
@@ -189,6 +213,7 @@ public class MainActivityFragment extends BaseEventBusFragment {
                 mPhotoPublicThumbnailAdapter.setItemSelected(0);
                 imageViewPager.setCurrentItem(0);
 
+                stopRefreshing();
             }catch (Exception e) {
                 e.printStackTrace();
             }
@@ -200,7 +225,34 @@ public class MainActivityFragment extends BaseEventBusFragment {
      */
     public void onEvent(VolleyError error) {
         //error
-        Toast.makeText(getContext(), "Error: " + tag, Toast.LENGTH_LONG).show();
+        stopRefreshing();
+
+        mPhotoPublicItemList.clear();
+        mPhotoPublicPagerAdapter.notifyDataSetChanged();
+        mPhotoPublicThumbnailAdapter.notifyDataSetChanged();
+
+        mTextError.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Start the refreshing Icon animation
+     */
+    private void startRefreshing() {
+        if (refreshIcon != null) {
+            // animation start
+            Animation rotation = AnimationUtils.loadAnimation(getContext(), R.anim.rotation);
+            rotation.setRepeatCount(Animation.INFINITE);
+            refreshIcon.startAnimation(rotation);
+    }
+    }
+
+    /**
+     * Stop the refreshing Icon animation
+     */
+    private void stopRefreshing()
+    {
+        if (refreshIcon != null)
+        refreshIcon.clearAnimation();
     }
 
 

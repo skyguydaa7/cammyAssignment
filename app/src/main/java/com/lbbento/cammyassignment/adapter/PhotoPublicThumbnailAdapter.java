@@ -16,7 +16,9 @@ import java.util.ArrayList;
 
 /**
  * Created by lbbento on 10/11/15.
- */
+ * Adapter to control the thumbnails
+ *
+ * */
 public class PhotoPublicThumbnailAdapter extends  RecyclerView.Adapter <PhotoPublicThumbnailAdapter.ListItemViewHolder>   {
 
     private ArrayList<PhotoPublicItem> mPhotoPublicItemList;

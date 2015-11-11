@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.facebook.drawee.view.SimpleDraweeView
@@ -8,16 +9,32 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
 
-    <TextView
-        android:id="@+id/title"
-        android:textColor="@color/image_page_text"
-        android:textSize="@dimen/thumbnail_item_textsize"
-        android:layout_alignParentBottom="true"
+    <LinearLayout
+        android:id="@+id/linearPhotoInfo"
+        android:orientation="vertical"
         android:paddingBottom="10dp"
         android:paddingTop="5dp"
         android:paddingLeft="4dp"
-        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
         android:background="@color/image_page_text_background"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/title"
+            android:textColor="@color/image_page_text"
+            android:textSize="@dimen/thumbnail_item_textsize"
+            android:layout_width="match_parent"
+            android:maxLines="3"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/date"
+            android:textColor="@color/image_page_text"
+            android:textSize="@dimen/thumbnail_item_datesize"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 </RelativeLayout>

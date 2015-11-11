@@ -9,7 +9,7 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/imageCard"
         android:scaleType="fitCenter"
-        android:layout_margin="2dp"
+        android:layout_margin="3dp"
         android:adjustViewBounds="true"
         android:layout_height="match_parent"
         android:layout_width="wrap_content"

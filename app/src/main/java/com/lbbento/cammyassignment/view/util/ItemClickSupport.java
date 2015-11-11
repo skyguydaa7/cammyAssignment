@@ -6,7 +6,7 @@ import android.view.View;
 import com.lbbento.cammyassignment.R;
 
 /**
- * by Little Robots. Good idea.
+ * Listen for the click on the Recycler View Item
  */
 
 public class ItemClickSupport {

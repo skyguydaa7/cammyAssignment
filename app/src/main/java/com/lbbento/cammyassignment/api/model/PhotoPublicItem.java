@@ -1,6 +1,7 @@
 package com.lbbento.cammyassignment.api.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by lbbento on 10/11/15.
@@ -8,6 +9,7 @@ import java.io.Serializable;
 public class PhotoPublicItem implements Serializable {
 
     private String title;
+    private Date published;
     private MediaItem media;
 
     public PhotoPublicItem() {
@@ -28,6 +30,14 @@ public class PhotoPublicItem implements Serializable {
 
     public void setMedia(MediaItem media) {
         this.media = media;
+    }
+
+    public Date getPublished() {
+        return published;
+    }
+
+    public void setPublished(Date published) {
+        this.published = published;
     }
 }
 

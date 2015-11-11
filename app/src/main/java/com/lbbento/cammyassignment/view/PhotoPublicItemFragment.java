@@ -6,12 +6,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.lbbento.cammyassignment.R;
 import com.lbbento.cammyassignment.api.model.PhotoPublicItem;
 import com.lbbento.cammyassignment.view.base.BaseFragment;
+import com.lbbento.cammyassignment.view.util.ViewUtil;
 
 import icepick.Icepick;
 import icepick.State;
@@ -76,12 +78,17 @@ public class PhotoPublicItemFragment extends BaseFragment {
      */
     private void bindViews(View view) {
         SimpleDraweeView mSimpleDraweeView = (SimpleDraweeView) view.findViewById(R.id.image);
+        LinearLayout photoInfo = (LinearLayout) view.findViewById(R.id.linearPhotoInfo);
         TextView title = (TextView) view.findViewById(R.id.title);
+        TextView date = (TextView) view.findViewById(R.id.date);
 
-        if (mPhotoPublicItem.getTitle() != null && mPhotoPublicItem.getTitle().length() > 0)
+        if (mPhotoPublicItem.getTitle() != null && mPhotoPublicItem.getTitle().trim().length() > 0) {
             title.setText(mPhotoPublicItem.getTitle());
-        else
-            title.setVisibility(View.GONE);
+            if (mPhotoPublicItem.getPublished() != null)
+                date.setText(ViewUtil.getHourFormatted(mPhotoPublicItem.getPublished()));
+        } else
+            photoInfo.setVisibility(View.GONE);
+
         mSimpleDraweeView.setImageURI(Uri.parse(mPhotoPublicItem.getMedia().getM()));
     }
 

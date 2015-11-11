@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_fragment_background"
     tools:context=".MainActivityFragment">
 
     <android.support.v7.widget.Toolbar
@@ -15,18 +16,29 @@
         android:elevation="5dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/error"
+        android:text="@string/error"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/image_page_text"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_weight="0.8"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:background="@android:color/transparent">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/imageViewPager"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="@color/main_fragment_background"/>
+            android:background="@android:color/transparent"/>
 
     </LinearLayout>
 
@@ -36,6 +48,7 @@
         android:layout_weight="0.2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@android:color/transparent"
         />
 
 </LinearLayout>

@@ -4,5 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="thumbnail_item_textsize">16sp</dimen> <!--Indigo Color - Google Syle-->
+    <dimen name="thumbnail_item_datesize">13sp</dimen> <!--Indigo Color - Google Syle-->
 
 </resources>

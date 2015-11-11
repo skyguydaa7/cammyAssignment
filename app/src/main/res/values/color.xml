@@ -3,7 +3,7 @@
     <color name="toolbar">#5C6BC0</color> <!--Indigo Color - Google Syle-->
 
 
-    <color name="main_fragment_background">#EEEEEE</color> <!--Grey Color - Google Syle-->
+    <color name="main_fragment_background">#424242</color> <!--Grey Color - Google Syle-->
 
     <color name="thumbnail_item_selected">#5C6BC0</color> <!--Indigo Color - Google Syle-->
 
