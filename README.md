@@ -1,5 +1,4 @@
-Cammy Assignment
-
+Eventbus example
 
 This App reads the FlickrPublicPhotos API using JSON format and show the pictures in a gallery design.<br>
 This project uses:<br><br>
